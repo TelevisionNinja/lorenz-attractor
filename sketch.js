@@ -18,7 +18,7 @@ const opacity = 255; // [0, 255]
 
 let cam;
 
-function firstPersonCamera(cam) {
+function firstPersonCamera(cam, speed = 10) {
     // store state
     if (typeof cam.firstPersonCameraState === 'undefined') {
         cam.firstPersonCameraState = {
@@ -43,30 +43,30 @@ function firstPersonCamera(cam) {
     if (keyIsPressed) {
         // forwards and backwards
         if (keyCode == 87) { // 87: w
-            cam.eyeX -= 2 * Math.cos(cam.firstPersonCameraState.azimuth);
-            cam.eyeZ += 2 * Math.sin(cam.firstPersonCameraState.azimuth);
+            cam.eyeX -= speed * Math.cos(cam.firstPersonCameraState.azimuth);
+            cam.eyeZ += speed * Math.sin(cam.firstPersonCameraState.azimuth);
         }
         else if (keyCode == 83) { // 83: s
-            cam.eyeX += 2 * Math.cos(cam.firstPersonCameraState.azimuth);
-            cam.eyeZ -= 2 * Math.sin(cam.firstPersonCameraState.azimuth);
+            cam.eyeX += speed * Math.cos(cam.firstPersonCameraState.azimuth);
+            cam.eyeZ -= speed * Math.sin(cam.firstPersonCameraState.azimuth);
         }
 
         // side
         else if (keyCode == 65) { // 65: a
-            cam.eyeX -= 2 * Math.cos(cam.firstPersonCameraState.azimuth + Math.PI / 2);
-            cam.eyeZ += 2 * Math.sin(cam.firstPersonCameraState.azimuth + Math.PI / 2);
+            cam.eyeX -= speed * Math.cos(cam.firstPersonCameraState.azimuth + Math.PI / 2);
+            cam.eyeZ += speed * Math.sin(cam.firstPersonCameraState.azimuth + Math.PI / 2);
         }
         else if (keyCode == 68) { // 68: d
-            cam.eyeX += 2 * Math.cos(cam.firstPersonCameraState.azimuth + Math.PI / 2);
-            cam.eyeZ -= 2 * Math.sin(cam.firstPersonCameraState.azimuth + Math.PI / 2);
+            cam.eyeX += speed * Math.cos(cam.firstPersonCameraState.azimuth + Math.PI / 2);
+            cam.eyeZ -= speed * Math.sin(cam.firstPersonCameraState.azimuth + Math.PI / 2);
         }
 
         // up and dowm
         else if (keyCode == 16) { // 16: shift
-            cam.eyeY += 2;
+            cam.eyeY += speed;
         }
         else if (keyCode == 32) { // 32: space
-            cam.eyeY -= 2;
+            cam.eyeY -= speed;
         }
     }
 
