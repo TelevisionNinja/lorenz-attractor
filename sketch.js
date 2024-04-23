@@ -86,7 +86,7 @@ function firstPersonCamera(cam, speed = 10) {
 }
 
 function setup() {
-    createCanvas(1280, 720, WEBGL);
+    createCanvas(windowWidth - 16, windowHeight - 16, WEBGL);
     cam = createCamera();
 }
 
@@ -130,4 +130,9 @@ function draw() {
     }
 
     firstPersonCamera(cam);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth - 16, windowHeight - 16);
+    initialize();
 }
